@@ -1,0 +1,79 @@
+.item {
+  @include flex(row, space-between, initial);
+  color: $categories-color;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.349);
+
+  &__ok,
+  &__del {
+    position: relative;
+    @include flex(row, center, center);
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__ok {
+    border: 1px solid $left-color;
+  }
+
+  &__del {
+    background: url("../images/icon-cross.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__okIcon,
+  &__delIcon {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  &__okButton,
+  &__delButton {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  &__text {
+    flex: 1;
+    height: auto;
+    padding: 0 2rem;
+    font-size: 1.8rem;
+    @include flex(row, flex-start, center);
+  }
+}
+
+.bg-ok-button {
+  background: url("../images/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1rem;
+}
+
+.bg-ok-button2 {
+  background: linear-gradient(90deg, #57ddff 0%, #c058f3 100%);
+}
+
+.ok-text {
+  text-decoration: line-through;
+  color: $left-color;
+}
+
+.selected-option {
+  font-weight: bold;
+}
+
+.dark-options {
+  background: #484b6a;
+  color: white;
+}
+
+.dark-text {
+  color: white;
+}

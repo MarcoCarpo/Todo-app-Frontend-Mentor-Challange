@@ -1,0 +1,135 @@
+body {
+  min-height: 100vh;
+  position: relative;
+  background: $bg-ligh-color;
+  user-select: none;
+  @include flex(column, initial, center);
+  transition: 0.3s;
+}
+
+.background {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 22rem;
+  object-fit: cover;
+}
+
+.wrapper {
+  width: 85%;
+  margin: auto;
+  min-width: 30rem;
+}
+
+.header {
+  @include flex(row, space-between, center);
+  padding-top: 5rem;
+
+  &__title {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.8rem;
+  }
+
+  &__lida {
+    display: inline-block;
+    position: relative;
+  }
+
+  &__lida input {
+    cursor: pointer;
+    width: 2.6rem;
+    height: 2.9rem;
+    opacity: 0;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: url("../images/icon-moon.svg");
+  }
+}
+
+.content {
+  @include flex(column, center, center);
+}
+
+.todo {
+  width: 100%;
+  margin-top: 4rem;
+  box-shadow: 0 1rem 1rem 0.3rem rgba(0, 0, 0, 0.061);
+
+  &__input {
+    border: none;
+    border-radius: 0.5rem;
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  &__content {
+    margin-top: 1.8rem;
+    border-radius: 0.5rem;
+    background: white;
+    color: $left-color;
+  }
+
+  &__options {
+    @include flex(row, space-between, center);
+    padding: 1.5rem;
+  }
+
+  &__clear {
+    cursor: pointer;
+  }
+
+  &__ghostButton {
+    display: none;
+  }
+}
+
+.categories {
+  color: $categories-color;
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  border-radius: 0.5rem;
+  background: white;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  box-shadow: 0 1rem 1rem 0.3rem rgba(0, 0, 0, 0.061);
+
+  &__content {
+    @include flex(row, center, center);
+  }
+}
+
+.category {
+  position: relative;
+  margin: 0.5rem 1rem;
+}
+
+.category input {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.attribution {
+  @include flex(row, center, flex-end);
+  margin-top: 3rem;
+  flex: 1;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}

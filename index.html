@@ -25,36 +25,61 @@
     <title>Frontend Mentor | Todo app</title>
   </head>
   <body>
-    <header class="title">
-      <h1 class="title__name">Todo</h1>
-    </header>
-    <main class="content">
-      <form action="" class="todo">
-        <input
-          type="text"
-          class="todo__input"
-          placeholder="Create a new todo..."
-        />
-        <div class="todo__items">
-          <!-- Here the items generated with Js -->
+    <div class="wrapper">
+      <img src="./assets/images/bg-mobile-light.jpg" class="background" />
+      <header class="header">
+        <h1 class="header__title">Todo</h1>
+        <label class="header__lida">
+          <span class="header__icon"></span>
+          <input type="checkbox" />
+        </label>
+      </header>
+      <main class="content">
+        <form action="" class="todo">
+          <input
+            type="text"
+            class="todo__input"
+            placeholder="Create a new todo..."
+            maxlength="30"
+          />
+          <button class="todo__ghostButton"></button>
+
+          <div class="todo__content">
+            <div class="todo__items">
+              <!-- Here the items generated with Js -->
+            </div>
+            <div class="todo__options">
+              <p class="todo__left">0 items left</p>
+              <p class="todo__clear">Clear Completed</p>
+            </div>
+          </div>
+        </form>
+        <div class="categories">
+          <div class="categories__content">
+            <div class="category">
+              <input type="radio" name="category" class="all" />
+              <label>All</label>
+            </div>
+            <div class="category">
+              <input type="radio" name="category" class="active" />
+              <label>Active</label>
+            </div>
+            <div class="category">
+              <input type="radio" name="category" class="completed" />
+              <label>Completed</label>
+            </div>
+          </div>
         </div>
-        <div class="todo__options">
-          <p class="todo__left">items left</p>
-          <ul class="todo__categories">
-            <li class="todo__category">All</li>
-            <li class="todo__category">Active</li>
-            <li class="todo__category">Completed</li>
-          </ul>
-          <p class="todo__clear">Clear Completed</p>
-        </div>
-      </form>
-    </main>
+      </main>
+    </div>
 
     <div class="attribution">
-      Challenge by
+      Challenge by 
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="https://github.com/MarcoCarpo">MarcoCarpo</a>.
+        > Frontend Mentor </a
+      >. Coded by <a href="https://github.com/MarcoCarpo"> MarcoCarpo</a>.
     </div>
+
+    <script src="./assets/scripts/app2.js"></script>
   </body>
 </html>

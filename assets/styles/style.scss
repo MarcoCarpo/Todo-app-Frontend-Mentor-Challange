@@ -1,9 +1,28 @@
 // Variables
 
+$bg-ligh-color: #fafafa;
+$left-color: #9394a5;
+$categories-color: #484b6a;
+$check-bg: linear-gradient(90deg, #57ddff 0%, #c058f3 100%);
+
 // Helper mixings
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin absPos($top, $left, $topTr, $leftTr) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  transform: translate(-$leftTr, -$topTr);
+}
 
 // Imports
 
 @import "global";
 @import "page";
+@import "jsStyles";
 @import "query";
