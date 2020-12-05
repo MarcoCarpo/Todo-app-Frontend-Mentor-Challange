@@ -1,4 +1,4 @@
-// DOM content
+//--------------------------------------------------------- DOM content
 const background = document.querySelector(".background");
 const todo = document.querySelector(".todo");
 const left = document.querySelector(".todo__left");
@@ -14,28 +14,12 @@ const buttonLida = document.querySelector(".header__lida input");
 const body = document.querySelector("body");
 const attr = document.querySelector(".attribution");
 
-categ.addEventListener("click", (event) => {
-  switch (event.target.classList[0]) {
-    case "active":
-      for (item of todoItems.children) {
-        if (item.children[0].classList.contains("bg-ok-button2"))
-          item.style.display = "none";
-      }
-      break;
-    case "all":
-      for (item of todoItems.children) {
-        item.style.display = "flex";
-      }
-      break;
-    case "completed":
-      for (item of todoItems.children) {
-        if (!item.children[0].classList.contains("bg-ok-button2"))
-          item.style.display = "none";
-      }
-  }
-});
+//-------------------------------------------------------- Event Listeners
+// For media queries
+window.addEventListener("DOMContentLoaded", mediaQ);
+window.addEventListener("resize", mediaQ);
 
-// Event Listeners
+// Switch between light and Dark mode
 buttonLida.addEventListener("click", switchLight);
 
 // Add an Item
@@ -47,7 +31,28 @@ itemContainer.addEventListener("click", chdel);
 // Delete the completed items
 clearBtn.addEventListener("click", clearAll);
 
-// Functions
+// Filter Items
+categ.addEventListener("click", filterItems);
+
+//----------------------------------------------------------- Functions
+
+function mediaQ() {
+  const media = window.matchMedia("(min-width: 780px)");
+  const imgBg = document.querySelector(".background");
+  if (media.matches) {
+    if (buttonLida.classList.contains("dark")) {
+      imgBg.src = "./assets/images/bg-desktop-dark.jpg";
+    } else {
+      imgBg.src = "./assets/images/bg-desktop-light.jpg";
+    }
+  } else {
+    if (buttonLida.classList.contains("dark")) {
+      imgBg.src = "./assets/images/bg-mobile-dark.jpg";
+    } else {
+      imgBg.src = "./assets/images/bg-mobile-light.jpg";
+    }
+  }
+}
 
 function switchLight() {
   options.classList.toggle("dark-options");
@@ -60,6 +65,11 @@ function switchLight() {
   }
   background.style.transition = "0.3s";
   if (buttonLida.classList.contains("dark")) {
+    for (item of itemContainer.children) {
+      item.children[2].children[0].style.background = `url("../assets/images/icon-cross.svg")`;
+      item.children[2].children[0].style.backgroundRepeat = `no-repeat`;
+      item.children[2].children[0].style.backgroundPosition = `center`;
+    }
     buttonLida.previousElementSibling.style.content = `url("../assets/images/icon-moon.svg")`;
     background.style.transform = "translate(100%,0)";
     background.addEventListener("transitionend", () => {
@@ -67,8 +77,15 @@ function switchLight() {
       background.style.transform = "translate(0,0)";
       buttonLida.classList.remove("dark");
       body.style.background = "white";
+      attr.style.color = "black";
+      mediaQ();
     });
   } else {
+    for (item of itemContainer.children) {
+      item.children[2].children[0].style.background = `url("../assets/images/icon-cross-dark.svg")`;
+      item.children[2].children[0].style.backgroundRepeat = `no-repeat`;
+      item.children[2].children[0].style.backgroundPosition = `center`;
+    }
     buttonLida.previousElementSibling.style.content = `url("../assets/images/icon-sun.svg")`;
     background.style.transform = "translate(100%,0)";
     background.addEventListener("transitionend", () => {
@@ -76,8 +93,8 @@ function switchLight() {
       background.style.transform = "translate(0,0)";
       body.style.background = "#292b3a";
       buttonLida.classList.add("dark");
-      console.log(attr);
       attr.style.color = "white";
+      mediaQ();
     });
   }
 }
@@ -107,6 +124,9 @@ function addItem(event) {
 
     if (options.classList.contains("dark-options")) {
       newItem.classList.add("dark-options");
+      newItem.children[2].children[0].style.background = `url("../assets/images/icon-cross-dark.svg")`;
+      newItem.children[2].children[0].style.backgroundPosition = "center";
+      newItem.children[2].children[0].style.backgroundRepeat = "no-repeat";
     }
     // Append the new item to the item container
     newItem.children[1].innerText = input.value;
@@ -161,5 +181,31 @@ function clearAll() {
 
       // itemContainer.selector.children[i].remove();
     }
+  }
+}
+
+function filterItems(event) {
+  switch (event.target.classList[0]) {
+    case "active":
+      for (item of todoItems.children) {
+        if (item.children[0].classList.contains("bg-ok-button2"))
+          item.style.display = "none";
+        else item.style.display = "flex";
+      }
+      break;
+    case "all":
+      for (item of todoItems.children) {
+        item.style.display = "flex";
+      }
+      break;
+    case "completed":
+      for (item of todoItems.children) {
+        if (!item.children[0].classList.contains("bg-ok-button2"))
+          item.style.display = "none";
+        else {
+          item.style.display = "flex";
+        }
+      }
+      break;
   }
 }

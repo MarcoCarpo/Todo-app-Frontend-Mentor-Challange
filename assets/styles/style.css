@@ -291,7 +291,7 @@ body {
 }
 
 .item__del {
-  background: url("../images/icon-cross.svg");
+  background: url(../images/icon-cross.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -362,5 +362,11 @@ body {
 
 .dark-text {
   color: white;
+}
+
+@media screen and (min-width: 780px) {
+  .wrapper {
+    max-width: 67rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */
